@@ -1,0 +1,78 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta content="en-us" http-equiv="Content-Language" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <title>OES</title>
+    <style type="text/css">
+        .style2 {
+            text-align: center;
+        }
+
+        .style3 {
+            background-color: #a6a6a6;
+        }
+
+        .style4 {
+            color: #FFFFFF;
+        }
+
+        .style5 {
+            border: 1px solid #000000;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="http://127.0.0.1:5000/login" method="post" style="height: 433px; width: 1080px" class="style3">
+        <table style=" width: 100%">
+            <tr>
+                <td>
+                    <img alt="logo" height="162" src="images/logo.png" width="1076" />
+                </td>
+            </tr>
+        </table>
+        <table style="width: 100%">
+            <tr>
+                <td class="style2">Online Examination System </td>
+            </tr>
+        </table>
+        <br />
+        <table align="center" style="width: 24%; height: 95px;" class="style5">
+            <tr>
+                <td style="width: 253px">
+                    <table style="width: 100%">
+                        <tr>
+                            <td><span class="style4"><strong>Login</strong></span>
+                            </td>
+                        </tr>
+                    </table>
+                    <label for="username">username:&nbsp;
+                        <input type="text" id="username" name="username" /></label><br />
+                    <label for="password">password:&nbsp;
+                        <input style="width: 131px" type="password" id="password" name="password" /><br />
+                    </label>
+                    <input name="Checkbox1" type="checkbox" />
+                    <label id="Label3"> Remember me next time</label> <br />
+                    <button type="submit">Login</button>
+
+                </td>
+                {{#if message}}
+                <h4>{{message}}</h4>
+                {{/if}}
+            </tr>
+        </table>
+        <br />
+        <table style="width: 9%">
+            <tr>
+                <td><strong>
+                        <a href="http://127.0.0.1:5000/">
+                            Home</a></strong></td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <title>View Exam</title>
+
+    <style type="text/css">
+        .style3 {
+            background-color: #a6a6a6;
+        }
+
+        .style2 {
+            text-align: center;
+        }
+
+        .style6 {
+            background-color: #cccccc;
+        }
+
+        .style7 {
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="http://127.0.0.1:5000/instructor/success" method="post" style="height: 703px; width: 1080px"
+        class="style3">
+        <input type="hidden" id="examName" name="examName" value="{{name}}">
+        <table style="width: 100%">
+            <tr>
+                <td>
+                    <img alt="logo" height="162" src="/images/logo.png" width="1076" />
+                </td>
+            </tr>
+        </table>
+
+        <table style="width: 100%">
+            <tr>
+                <td class="style2">Online Examination System</td>
+            </tr>
+        </table>
+
+        <br />
+        <table margin="auto" style="width: 90%">
+            <tr>
+                <td class="style6">
+                    View the exam<br />
+                    <br />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table style="width: 100%">
+                        <tr>
+                            <td style="width: 300px">{{name}}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 300px">
+                                {{date}} {{time}}&nbsp; Duration: {{duration}}-hours
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Question {{n1}}</td>
+            </tr>
+            <tr>
+                <td>{{q1}}</td>
+            </tr>
+            <tr>
+                <td>{{a1}}</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Question {{n2}}</td>
+            </tr>
+            <tr>
+                <td>{{q2}}</td>
+            </tr>
+            <tr>
+                <td>{{a2}}</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    <table align="left" style="width: 38%">
+                        <tr>
+                            <td style="width: 100px">
+                                <button type="submit">Ok</button>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <br />
+        <br />
+        <br />
+    </form>
+</body>
+
+</html>

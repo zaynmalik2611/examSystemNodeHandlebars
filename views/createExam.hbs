@@ -1,0 +1,142 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <title>Course</title>
+
+
+    <style type="text/css">
+        .style3 {
+            background-color: #a6a6a6;
+        }
+
+        .style2 {
+            text-align: center;
+        }
+
+        .style4 {
+            border: 1px solid #000000;
+        }
+
+        .style5 {
+            background-color: #CCCCCC;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <form action="http://127.0.0.1:5000/instructor/courses/createExam" method="post"
+        style="height: 736px; width: 1080px" class="style3">
+        <table style="width: 100%">
+            <tr>
+                <td>
+                    <img alt="logo" height="162" src="/images/logo.png" width="1076" />
+                </td>
+            </tr>
+        </table>
+        <table align="center" style="width: 50%" class="style4">
+            {{#each course}}
+            <tr>
+                <td>{{courseMeta}} {{courseName}}<br />
+                </td>
+            </tr>
+            {{/each}}
+        </table>
+        <table align="center" style="width: 90%">
+            <tr>
+                <td class="style6">Create Exam<br />
+                    <br />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table style="width: 100%">
+                        <tr>
+                            <td style="width: 300px">Exam details</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table id="sth" style="width: 100%">
+                        <label for="eName">Exam Title:
+                            <input style="width: 500px;" type="text" id="eName" name="eName">
+                        </label>
+                        <br>
+                        <br>
+                        <label for="eDate">Day
+                            <input type="date" id="eDate" name="eDate">
+                        </label>
+                        <br>
+                        <br>
+                        <label for="eTime">Start Time
+                            <input type="time" id="eTime" name="eTime">
+                        </label>
+                        <br>
+                        <br>
+                        <label for="duration">Exam Duration(hours)
+                            <input type="Number" id="duration" name="duration" min="1" max="3">
+                        </label>
+                        <h3>Set Questions</h3>
+                        <label for="qN1">Question Number:
+                            <input type="Number" id="qN1" name="qN1" min="1" , max="2">
+                        </label>
+                        <label for="q1">Question:
+                            <input style="width: 600px;" type="text" id="q1" name="q1">
+                        </label>
+                        <br>
+                        <label for="a1">Choose an answer:</label>
+                        <select name="a1" id="a1">
+                            <option value="True">True</option>
+                            <option value="False">False</option>
+                        </select>
+                        <br>
+                        <br>
+                        <label for="qN2">Question Number:
+                            <input type="Number" id="qN2" name="qN2" min="1" , max="2">
+                        </label>
+                        <label for="q2">Question:
+                            <input style="width: 600px;" type="text" id="q2" name="q2">
+                        </label>
+                        <br>
+                        <label for="a2">Choose an answer:</label>
+                        <select name="a2" id="a2">
+                            <option value="True">True</option>
+                            <option value="False">False</option>
+                        </select>
+
+
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                    <button type="submit" value="Submit">Submit</button>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <button type="reset" value="Reset">Reset</button>
+                </td>
+            </tr>
+        </table>
+        <br />
+        <br />
+
+        <br />
+        <br />
+        <br />
+        <br />
+        {{#each course}}
+        <input type="hidden" id="courseMeta" name="courseMeta" value="{{courseMeta}}">
+        {{/each}}
+    </form>
+</body>
+
+</html>

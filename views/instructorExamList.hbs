@@ -1,0 +1,98 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <title>test</title>
+
+
+    <style type="text/css">
+        .style3 {
+            background-color: #a6a6a6;
+        }
+
+        .style2 {
+            text-align: center;
+        }
+
+        .style4 {
+            border: 1px solid #000000;
+        }
+
+        .style5 {
+            background-color: #CCCCCC;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <table style="width: 100%">
+        <tr>
+            <td>
+                <img alt="logo" height="162" src="/images/logo.png" width="1076" />
+            </td>
+        </tr>
+    </table>
+
+    <table style="width: 100%">
+        <tr>
+            <td class="style2">Online Examination System </td>
+        </tr>
+    </table>
+
+    <br />
+    <table align="center" style="width: 50%" class="style4">
+        <tr>
+            <td class="style5">{{courseMeta}}:{{courseName}}<br />
+            </td>
+        </tr>
+        {{#each examInfo}}
+        <tr>
+            <td>
+                {{examID}}. {{examName}}
+            </td>
+        </tr>
+        {{/each}}
+        <tr>
+            <td>For deleting any exam, Put its id below</td>
+        </tr>
+        <tr>
+            <td>
+                <form action="" method="POST" id="deleteExam">
+                    <input type="number" name="id" id="id">
+                    <button type="submit">Submit</button>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td id="message"></td>
+        </tr>
+        <tr>
+            <td>
+                <a href="http://127.0.0.1:5000/instructor/courses/{{courseMeta}}/createExam">Create Exam</a>
+            </td>
+        </tr>
+    </table>
+    <br />
+    <br />
+    <script>
+        const form = document.getElementById('deleteExam');
+        console.log(form);
+        form.addEventListener('submit', async event => {
+            event.preventDefault();
+            const idInput = form.querySelector('input[name="id"]');
+            const id = idInput.value;
+            const res = await fetch(`http://127.0.0.1:5000/instructor/deleteExam/${id}`, {
+                method: 'DELETE'
+            });
+            const json = await res.json();
+            document.getElementById('message').innerHTML = json.message;
+        });
+    </script>
+</body>
+
+</html>

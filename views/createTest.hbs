@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing making form</title>
+    <script>
+        var i = 1;
+        function addQuestion() {
+            var a = document.createElement('input');
+            var b = document.createElement('input');
+            var c = document.createElement('input');
+            var questDiv = document.createElement('div');
+            a.setAttribute('id', i);
+            a.setAttribute('name', 'n' + i);
+            a.setAttribute('placeholder', 'Question Number');
+            a.setAttribute('type', 'Number');
+            b.setAttribute('id', i + 1);
+            b.setAttribute('name', 'q' + (i + 1));
+            b.setAttribute('placeholder', 'Question');
+            b.setAttribute('type', 'text');
+            c.setAttribute('type', 'button');
+            c.setAttribute('value', 'Add an answer');
+            i = i + 2;
+            document.getElementById('questContainer').appendChild(questDiv);
+            document.getElementById('questions').appendChild(a);
+            document.getElementById('questions').appendChild(b);
+        }
+    </script>
+    <style>
+        #questions {
+            display: grid;
+            grid-template-columns: 100px 600px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Hello we are testing form making here!</h2>
+    <h5>Be patient please!</h5>
+    <form action="/test" method="POST">
+        <h4>Questions</h4>
+        <div id="questContainer">
+
+        </div>
+        <button type="button" onclick="addQuestion()">Add Question</button>
+        <button>Submit</button>
+    </form>
+</body>
+
+</html>

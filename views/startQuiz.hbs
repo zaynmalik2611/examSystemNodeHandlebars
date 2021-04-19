@@ -1,0 +1,110 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <title>start</title>
+
+    <style type="text/css">
+        .style3 {
+            background-color: #a6a6a6;
+        }
+
+        .style2 {
+            text-align: center;
+        }
+
+        .style4 {
+            border: 1px solid #000000;
+        }
+
+        .style5 {
+            background-color: #cccccc;
+        }
+
+        .style6 {
+            background-color: #cccccc;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" method="post" style="height: 433px; width: 1080px" class="style3">
+        <table style="width: 100%">
+            <tr>
+                <td>
+                    <img alt="logo" height="162" src="/images/logo.png" width="1076" />
+                </td>
+            </tr>
+        </table>
+
+        <table style="width: 100%">
+            <tr>
+                <td class="style2">Online Examination System</td>
+            </tr>
+        </table>
+
+        <br />
+        <table align="center" style="width: 50%" class="style4">
+            <tr>
+                <td class="style5">
+                    {{courseMeta}}:{{courseName}}<br />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{#examInfo}}
+                    <table align="left" class="style6" style="width: 30%">
+
+                        <tr>
+                            <td>
+                                <b>Exam Name:</b> {{examName}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Date: </b>{{dat}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <b>Time: </b>{{tim}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>Duration of Exams: </b>
+                                {{duration}} -Hours
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="attempt">
+                                <a href="http://127.0.0.1:5000/student/{{../courseMeta}}/{{examName}}/attempt">Start
+                                    Quiz</a>
+                            </td>
+                        </tr>
+                    </table>
+                    {{/examInfo}}
+                </td>
+            </tr>
+        </table>
+        <br />
+        <br />
+    </form>
+    <script>
+        const examInfo = {{{ stringedInfo }}};
+        const { examName, dat, tim, duration } = examInfo[0];
+        const checkDate = new Date(dat);
+        const presentDate = new Date();
+        var splitTime = tim.split(":");
+        checkDate.setHours(splitTime[0]);
+        checkDate.setMinutes(splitTime[1]);
+        checkDate.setSeconds(splitTime[2]);
+        var attempt = document.getElementById("attempt");
+        if (presentDate > checkDate) {
+            attempt.style.display = "none";
+        }
+    </script>
+</body>
+
+</html>

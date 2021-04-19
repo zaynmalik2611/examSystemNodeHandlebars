@@ -1,0 +1,69 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <title>test</title>
+
+
+    <style type="text/css">
+        .style3 {
+            background-color: #a6a6a6;
+        }
+
+        .style2 {
+            text-align: center;
+        }
+
+        .style4 {
+            border: 1px solid #000000;
+        }
+
+        .style5 {
+            background-color: #CCCCCC;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <form action="" method="post" style="height: 433px; width: 1080px" class="style3">
+        <table style="width: 100%">
+            <tr>
+                <td>
+                    <img alt="logo" height="162" src="/images/logo.png" width="1076" />
+                </td>
+            </tr>
+        </table>
+
+        <table style="width: 100%">
+            <tr>
+                <td class="style2">Online Examination System </td>
+            </tr>
+        </table>
+
+        <br />
+        <table align="center" style="width: 50%" class="style4">
+            <tr>
+                <td class="style5">{{courseMeta}}:{{courseName}}<br />
+                </td>
+            </tr>
+            {{#each exams}}
+            <tr>
+                <td>
+                    <a href="http://127.0.0.1:5000/student/{{../courseMeta}}/{{examName}}">
+                        {{examName}}</a>
+                </td>
+            </tr>
+            {{/each}}
+        </table>
+        <br />
+        <br />
+
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <title>questions</title>
+
+    <style type="text/css">
+        .style3 {
+            background-color: #a6a6a6;
+        }
+
+        .style2 {
+            text-align: center;
+        }
+
+        .style6 {
+            background-color: #CCCCCC;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <form action="http://127.0.0.1:5000/student/saveExam" method="post" style="height: 703px; width: 1080px"
+        class="style3">
+        <table style=" width: 100%">
+            <tr>
+                <td>
+                    <img alt="logo" height="162" src="/images/logo.png" width="1076" />
+                </td>
+            </tr>
+        </table>
+
+        <table align="center" style="width: 90%;">
+            <tr>
+                <td class="style2">Online Examination System </td>
+            </tr>
+            <tr>
+                <td class="style6">{{courseMeta}}:{{courseName}}<br />
+                    <br />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{#each examInfo}}
+                    <table style="width: 100%">
+                        <tr>
+                            <td style="width: 300px"></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 300px">{{tim}}&nbsp;
+                                Duration: {{duration}}-Hours</td>
+                        </tr>
+                    </table>
+                    {{/each}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;</td>
+            </tr>
+        </table>
+
+        <br />
+        <table id="examTable" align="center" style="width: 90%">
+            <tr>
+                <td>Time Remaining</td>
+            </tr>
+            <tr>
+
+                <td>
+                    <p id="timer"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Question {{n1}}</b>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h4>{{q1}}</h4>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="a1">Choose an answer:</label>
+                    <select name="a1" id="a1">
+                        <option value="True">True</option>
+                        <option value="False">False</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Question {{n2}}</b>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h4>{{q2}}</h4>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="a2">Choose an answer:</label>
+                    <select name="a2" id="a2">
+                        <option value="True">True</option>
+                        <option value="False">False</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <input type="hidden" id="ans1" name="ans1" value="{{ans1}}">
+            </tr>
+            <tr>
+                <input type="hidden" id="ans2" name="ans2" value="{{ans2}}">
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit" value="Submit">Submit</button>
+                </td>
+            </tr>
+        </table>
+        <br />
+        <br />
+        <br />
+    </form>
+    <script>
+        var duration = {{{ duration }}};
+        window.onload = function () {
+            var hour = duration;
+            var min = 0;
+            var sec = 0;
+            var sI = setInterval(function () {
+                var a = new Date();
+                document.getElementById("timer").innerHTML = hour + " : " + min + " : " + sec;
+                if (sec == 0) {
+                    if (min >= 1) {
+                        min--;
+                        sec = 60;
+                    } else if (min == 0) {
+                        if (hour >= 1) {
+                            hour--;
+                            min = 59;
+                            sec = 60;
+                        } else if (hour == 0) {
+                            clearInterval(sI);
+                            document.getElementById("examTable").innerHTML = "<tr><td>Exam Timer is over</td></tr>"
+                        }
+
+                    }
+                }
+                sec--;
+            }, 1000);
+        }
+    </script>
+
+</body>
+
+</html>

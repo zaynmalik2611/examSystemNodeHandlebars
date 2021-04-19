@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>List of stuff to be deleted</h2>
+    <form method="POST" id="deleteTest">
+        <input type="number" name="id" id="id">
+        <button type="submit">Submit</button>
+    </form>
+    {{#each stuff}}
+    <ul>
+        <li>{{id}}.......{{maal}}
+
+    </ul>
+    {{/each}}
+    <script>
+        const form = document.getElementById('deleteTest');
+        form.addEventListener('submit', async event => {
+            event.preventDefault();
+            const idInput = form.querySelector('input[name="id"]');
+            const id = idInput.value;
+            const res = await fetch(`http://127.0.0.1:5000/deleteStuff/${id}`, {
+                method: 'DELETE'
+            });
+            const json = await res.json();
+            console.log(json.message);
+            window.location.href = json.redirect;
+        });
+    </script>
+</body>
+
+</html>
